@@ -1,0 +1,6 @@
+Require-Bundle: org.nuxeo.ecm.platform.services,
+ org.nuxeo.ecm.platform.web.common 
+Bundle-Name: nuxeo.platform.oauth2.userprofile
+Bundle-ManifestVersion: 2
+Nuxeo-Component: OSGI-INF/oauth2-profile-service.xml,OSGI-INF/linkedin-profile-provider-contrib.xml
+Bundle-SymbolicName: org.nuxeo.ecm.platform.oauth2.userprofile;singleton:=true

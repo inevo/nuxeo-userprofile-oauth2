@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<component name="org.nuxeo.ecm.platform.oauth2.userprofile.linkedin"
+	version="1.0">
+
+	<requires>org.nuxeo.ecm.platform.oauth2.userprofile.Oauth2ProfileProviderService
+	</requires>
+
+	<extension
+		target="org.nuxeo.ecm.platform.oauth2.userprofile.Oauth2ProfileProviderService"
+		point="profileProviders">
+		<profileProvider>
+			<name>LinkedInProfile</name>
+			<authorizationServerURL>https://www.linkedin.com/uas/oauth2/authorization
+			</authorizationServerURL>
+			<tokenServerURL>https://www.linkedin.com/uas/oauth2/accessToken
+			</tokenServerURL>
+			<accessTokenKey>oauth2_access_token</accessTokenKey>
+			<userProfileURL>https://api.linkedin.com/v1/people/~:(id,first-name,last-name,location,member-url-resources,interests,picture-url,date-of-birth,public-profile-url,summary,specialties,headline,educations,positions,email-address)?format=json
+			</userProfileURL>
+			<userProfileClass>org.nuxeo.ecm.platform.oauth2.userprofile.model.linkedin.LinkedInUserProfile
+			</userProfileClass>
+			<scope>r_fullprofile r_emailaddress</scope>
+			<icon>/img/linkedIn_icon.png</icon>
+			<clientId>CLIENT_ID</clientId>
+			<clientSecret>CLIENT_SECRET</clientSecret>
+		</profileProvider>
+	</extension>
+
+</component>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<component
+	name="org.nuxeo.ecm.platform.oauth2.userprofile.Oauth2ProfileProviderService"
+	version="1.0">
+
+	<documentation>
+		Oauth2 Profile Provider Service
+
+		@author Tiago Cardoso (tiago.cardoso@inevo.pt)
+	</documentation>
+
+	<require>org.nuxeo.ecm.platform.oauth2.providers.OAuth2ServiceProviderRegistry
+	</require>
+
+	<implementation
+		class="org.nuxeo.ecm.platform.oauth2.userprofile.service.Oauth2ProfileProviderServiceImpl" />
+
+	<service>
+		<provide
+			interface="org.nuxeo.ecm.platform.oauth2.userprofile.service.Oauth2ProfileProviderService" />
+	</service>
+
+	<extension-point name="profileProviders">
+		<documentation>
+			This extension point can be used to configure available profile
+			providers. A
+			given provider has the form:
+			<code>
+				<profileProvider>
+					<name>LinkedInProfile</name>
+					<authorizationServerURL>https://www.linkedin.com/uas/oauth2/authorization
+					</authorizationServerURL>
+					<tokenServerURL>https://www.linkedin.com/uas/oauth2/accessToken
+					</tokenServerURL>
+					<accessTokenKey>oauth2_access_token</accessTokenKey>
+					<userProfileURL>https://api.linkedin.com/v1/people/~:(id,first-name,last-name,location,member-url-resources,interests,picture-url,date-of-birth,public-profile-url,summary,specialties,headline,educations,positions,email-address)?format=json
+					</userProfileURL>
+					<userProfileClass>org.nuxeo.ecm.platform.oauth2.userprofile.model.linkedin.LinkedInUserProfile
+					</userProfileClass>
+					<scope>r_fullprofile r_emailaddress</scope>
+					<icon>/img/linkedIn_icon.png</icon>
+					<clientId>wuhx82f6jv0l</clientId>
+					<clientSecret>rlE7AS2YBm4VEo3M</clientSecret>
+				</profileProvider>
+
+			</code>
+			The
+			<em>name</em>
+			is the identifier for this provider. The provider is identified on
+			the service by this field.
+
+			The
+			<em>authorizationServerURL</em>
+			is the service authorization URL for the provider
+
+			The
+			<em>tokenServerURL</em>
+			is the service token URL for the provider
+
+			The
+			<em>userProfileURL</em>
+			is the service profile API URL for the provider
+
+			The
+			<em>userProfileClass</em>
+			is class that will hold the profile information
+
+			The
+			<em>scope</em>
+			is desired scope for the profile extension that we require
+
+			The
+			<em>icon</em>
+			is image path for the service icon
+
+		</documentation>
+		<object
+			class="org.nuxeo.ecm.platform.oauth2.userprofile.service.Oauth2ProfileProdiverDescriptor" />
+	</extension-point>
+
+</component>
